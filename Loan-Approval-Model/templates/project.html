@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* background: url('Project-Image.jpg') no-repeat center center fixed; */
+            background-size: cover;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px); /* Optional for a frosted glass effect */
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #007bff;
+            font-weight: 700;
+        }
+        .form-container .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-container label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-container .form-control {
+            border-radius: 8px;
+            border-color: #ced4da;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .form-container .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+        .form-container .btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border-color: #28a745;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        .form-container .btn:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            transform: scale(1.05);
+        }
+        .progress-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            height: 10px;
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Loan Prediction Form</h2>
+        <form id="loanForm" action="{{ url_for('submit') }}" method="post">
+            <div class="form-group">
+                <label for="name">What is your name?</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="" required>
+            </div>
+            <div class="form-group">
+                <label for="no_of_dependents">Number of dependents:</label>
+                <input type="number" id="no_of_dependents" name="no_of_dependents" class="form-control" placeholder="2" required>
+            </div>
+            <div class="form-group">
+                <label for="income_annum">Annual Income:</label>
+                <input type="number" id="income_annum" name="income_annum" class="form-control" placeholder="50000" required>
+            </div>
+            <div class="form-group">
+                <label for="loanAmount">How much loan do you need?</label>
+                <input type="number" id="loanAmount" name="loanAmount" class="form-control" placeholder="200000" required>
+            </div>
+            <div class="form-group">
+                <label for="loan_term">Loan Term (years):</label>
+                <input type="number" id="loan_term" name="loan_term" class="form-control" placeholder="10" required>
+            </div>
+            <div class="form-group">
+                <label for="cibil_score">CIBIL Score:</label>
+                <input type="number" id="cibil_score" name="cibil_score" class="form-control" placeholder="750" required>
+            </div>
+            <div class="form-group">
+                <label for="residential_assets_value">Value of Residential Assets:</label>
+                <input type="number" id="residential_assets_value" name="residential_assets_value" class="form-control" placeholder="300000" required>
+            </div>
+            <div class="form-group">
+                <label for="commercial_assets_value">Value of Commercial Assets:</label>
+                <input type="number" id="commercial_assets_value" name="commercial_assets_value" class="form-control" placeholder="100000" required>
+            </div>
+            <div class="form-group">
+                <label for="luxury_assets_value">Value of Luxury Assets:</label>
+                <input type="number" id="luxury_assets_value" name="luxury_assets_value" class="form-control" placeholder="50000" required>
+            </div>
+            <div class="form-group">
+                <label for="bank_asset_value">Value of Bank Assets:</label>
+                <input type="number" id="bank_asset_value" name="bank_asset_value" class="form-control" placeholder="100000" required>
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <select id="education" name="education" class="form-control">
+                    <option value="" disabled selected>Select your education level</option>
+                    <option value="1">Not Graduate</option>
+                    <option value="0">Graduate</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="self_employed">Are you self-employed?</label>
+                <select id="self_employed" name="self_employed" class="form-control">
+                    <option value="" disabled selected>Select your employment status</option>
+                    <option value="1">No</option>
+                    <option value="0">Yes</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar" style="width: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
