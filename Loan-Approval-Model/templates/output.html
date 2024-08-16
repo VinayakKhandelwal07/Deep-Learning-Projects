@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loan Application Result</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e2e2e2, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        .message {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            background: #4caf50; /* Default for approved */
+            transition: background 0.3s ease;
+        }
+        .message.rejected {
+            background: #f44336; /* Red color for rejected */
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Application Result</h1>
+        <div class="message {{ 'approved' if output == 'Approved' else 'rejected' }}">
+            {% if output == 'Approved' %}
+                <p>🎉 Congrats! Your loan application is approved successfully.</p>
+            {% else %}
+                <p>😔 Oops! Your loan application is rejected.</p>
+            {% endif %}
+        </div>
+        {% if image_file %}
+            <img src="{{ url_for('static', filename='images/' ~ img_file) }}" alt="Result Image">
+        {% endif %}
+        <a href="/" class="button">Back to Home</a>
+    </div>
+</body>
+</html>
