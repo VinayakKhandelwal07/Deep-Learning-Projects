@@ -3,7 +3,7 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import io
-
+ 
 app = Flask(__name__)
 
 model = tf.keras.models.load_model('models/CNN_model.h5')
