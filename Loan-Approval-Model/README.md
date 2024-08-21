@@ -3,7 +3,7 @@ Loan Approval Prediction Web Application
 Overview
 Welcome to the Loan Approval Prediction Web Application! This innovative tool harnesses the power of Artificial Neural Networks (ANNs) to forecast the likelihood of loan approval based on user input. Whether you're a financial institution evaluating applications or an individual curious about their loan eligibility, this application provides quick and accurate predictions.
 
-Features
+Features 
 Seamless User Experience: Input your financial details and receive immediate predictions about your loan approval status.
 High Accuracy: Our ANN model is trained on extensive historical loan data to deliver reliable predictions with high precision.
 Intuitive Interface: The web application offers a straightforward form for entering relevant financial and personal information.
